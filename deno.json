@@ -9,5 +9,8 @@
 	"fmt": {
 		"indentWidth": 4,
 		"useTabs": true
-	}
+	},
+	"unstable": [
+		"kv"
+	]
 }
