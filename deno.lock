@@ -2,6 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@oak/commons@1": "1.0.1",
+    "jsr:@oak/commons@^1.0.1": "1.0.1",
     "jsr:@oak/oak@*": "17.1.4",
     "jsr:@oak/oak@^17.1.4": "17.1.4",
     "jsr:@std/assert@1": "1.0.12",
@@ -29,7 +30,7 @@
     "@oak/oak@17.1.4": {
       "integrity": "60530b582bf276ff741e39cc664026781aa08dd5f2bc5134d756cc427bf2c13e",
       "dependencies": [
-        "jsr:@oak/commons",
+        "jsr:@oak/commons@1",
         "jsr:@std/assert",
         "jsr:@std/bytes",
         "jsr:@std/http",
@@ -70,6 +71,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@oak/commons@^1.0.1",
       "jsr:@oak/oak@^17.1.4"
     ]
   }

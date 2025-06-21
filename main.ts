@@ -1,25 +1,20 @@
 import { Application } from "@oak/oak/application";
 import { Router } from "@oak/oak/router";
-import { streamServerSent } from "./utils/server_sent_events.ts";
+import { ServerSentEvent } from "@oak/commons/server_sent_event";
 
 const router = new Router();
 
-router.get("/", (ctx) => {
-	ctx.response.headers = new Headers({
-		"content-type": "text/event-stream",
-	});
-	ctx.response.body = streamServerSent((stream) => {
-		let sequences = 1;
-		const interval = setInterval(
-			() =>
-				stream.postEvent({ event: "ping", data: String(sequences++) }),
-			2_000,
-		);
+router.get("/", async (ctx) => {
+	const events = await ctx.sendEvents();
 
-		return () => {
-			clearInterval(interval);
-		};
-	});
+	let sequences = 0;
+	setInterval(
+		() =>
+			events.dispatchEvent(
+				new ServerSentEvent("ping", { data: String(sequences++) }),
+			),
+		2_000,
+	);
 });
 
 const app = new Application();

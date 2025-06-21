@@ -3,6 +3,7 @@
 		"dev": "deno run --watch -A main.ts"
 	},
 	"imports": {
+		"@oak/commons": "jsr:@oak/commons@^1.0.1",
 		"@oak/oak": "jsr:@oak/oak@^17.1.4"
 	},
 	"fmt": {
